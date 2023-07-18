@@ -31,7 +31,9 @@ dfs(index):
             visited[i] = index
             dfs(i)
 """
-
+import sys
+input = sys.stdin.readline
+sys.setrecursionlimit(10**6)
 n = int(input())
 
 _map = [[] for i in range(n+1)]
