@@ -23,11 +23,14 @@ Keywords: Greedy
 import sys
 input = sys.stdin.readline
 
+# 3 x 3 을 뒤집기
 def reverse(r,c):
     for i in range(r,r+3):
         for j in range(c,c+3):
+            # 1 -> 0, 0 -> 1
             graph_A[i][j] = 1 - graph_A[i][j]
 
+# graph가 일치하는지 체크
 def check():
     for i in range(row):
         for j in range(col):
@@ -40,6 +43,7 @@ graph_A = [[int(x) for x in input().strip()] for _ in range(row)]
 graph_B = [[int(x) for x in input().strip()] for _ in range(row)]
 count = 0
 
+# 한칸씩 이동하면서 일치하는 지 확인
 for r in range(row-2):
     for c in range(col-2):
         if graph_A[r][c] != graph_B[r][c]:
@@ -49,4 +53,4 @@ for r in range(row-2):
 if check():
     print(count)
 else:
-    print("-1")
+    print(-1)
