@@ -32,20 +32,9 @@ A부터 몫을 구한다.
 
 """
 [sudo code]
-button = [300, 60, 10]
-count = []
 T = input()
 T가 10의 약수가 아니면 -1 리턴
-T가 10의 약수면
-
-for i in range(3):
-    if T 가 b[i]보다 크다면
-        count.append(T//button[i])
-        T = T % (button[i]*count[i])
-    else:
-        continue
-
-
+T가 10의 약수면 몫을 구한다.
 """
 T = int(input())
 

@@ -76,7 +76,6 @@ cnt.sort()
 print(len(cnt))
 for i in range(len(cnt)):
     print(cnt[i])
-  
 
 
 

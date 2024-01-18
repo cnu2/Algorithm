@@ -1,44 +1,44 @@
 import sys
 sys.setrecursionlimit(10**6)
+input = sys.stdin.readline
 
-M,N,K = map(int, input().split()) # row, col, 직사각형의 수
-
+area = 0
 result = []
+# 방향벡터
+dx = [0,0,-1,1]
+dy = [-1,1,0,0]
 
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-count = 0
-
-graph = []
-for _ in range(M):
-    graph.append([0] * N)
-
+M, N, K = map(int, input().split()) # 행의 개수, 열의 개수, 직사각형의 개수
+graph = [[0] * N for _ in range(M)]
+# 직사각형 입력
 for _ in range(K):
-    c1,r1,c2,r2 = map(int, input().split())
+    c1, r1, c2, r2 = map(int, input().split())
     for r in range(r1,r2):
         graph[r][c1:c2] = [1] * (c2-c1)
 
-def dfs(x,y): # row, col, size
-    global count
-    if x<0 or x>=M or y<0 or y>=N:
+def dfs(y,x):
+    global area
+    if y < 0 or y >= M or x < 0 or x >= N:
         return 0
-    if graph[x][y] == 1:
+    if graph[y][x] == 1:
         return 0
     
-    graph[x][y] = 1 # 방문처리 
-    count += 1
+    graph[y][x] = 1 # 방문처리
+    area += 1
     for i in range(4):
-        dfs(x+dx[i], y+dy[i])
+        dfs(y+dy[i], x+dx[i])
     
-    return count
+    return
 
 
-for row in range(M):
-    for col in range(N):
-        cnt = dfs(row,col)
-        if cnt:
-            result.append(cnt)
-            count = 0
+for i in range(M):
+    for j in range(N):
+        area = 0
+        dfs(i,j)
+        if area == 0:
+            continue
+        else:
+            result.append(area)
 
 print(len(result))
 for i in sorted(result):

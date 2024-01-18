@@ -61,4 +61,3 @@ else:
     # 왼쪽 + 가운데(홀수) + 오른쪽
     print(res + center + res[::-1])
 
-breakpoint()

@@ -1,8 +1,8 @@
 """
-1/3
-1. 23/05/17
-2. 23/05/30
-3.
+[문제 풀이]
+1. 
+2. 
+3. 
 """
 
 """
@@ -51,39 +51,39 @@ from collections import deque
 
 def bfs():
     while queue:
-        col, row, count = queue.popleft()
+        x,y,count = queue.popleft()
         for i in d:
-            dx = col + i[0]
-            dy = row + i[1]
-            if dx < 0 or dy < 0 or dx > n-1 or dy > m-1:
+            dx = x + i[0]
+            dy = y + i[1]
+            if dx < 0 or dx >= n or dy < 0 or dy >= m:
                 continue
-            elif dx == n-1 and dy == m-1:
+            if dx == n-1 and dy == m-1:
                 temp_count = count + 1
                 result.append(temp_count)
-            elif graph[dx][dy] == 1:
-                graph[dx][dy] = 0
-                # breakpoint()
-                temp_count = count + 1
-                queue.append((dx,dy,temp_count))
-    
+            else:
+                if _map[dx][dy] == 1:
+                    temp_count = count + 1
+                    _map[dx][dy] = 0
+                    queue.append((dx,dy,temp_count))
+
     return min(result)
 
-# 행과 열를 입력
-n,m = map(int,input().split())
-# 지도
-graph=[]
-# 결과
+n,m = map(int, input().split())
+# 결과 리스트
 result = []
-# 지도작성
-graph = [[int(ch) for ch in input()] for _ in range(n)]
-
-# 방향벡터 설정
-# 상하좌우
-d = [[-1,0],[1,0],[0,-1],[0,1]]
+# 맵 생성
+_map = []
+for i in range(n):
+    row = list(map(int, input()))
+    _map.append(row)
+# 방향벡터
+d = [[-1,0], [1,0], [0,-1], [0,1]]
+count = 1
 queue = deque()
-# 시작점(0,0) 과 count 1 추가
-queue.append((0,0,1))
-graph[0][0] == 0
-
+queue.append((0, 0, count))
+_map[0][0] = 0
 
 print(bfs())
+
+
+

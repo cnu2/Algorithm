@@ -19,7 +19,7 @@ for _ in range(T):
     for i in range(len(w)):
         if char_dict[w[i]] < k:
             continue
-
+        
         check = True
         check_dict[w[i]] = check_dict.get(w[i], []) + [i]
     for key, value_list in check_dict.items():
