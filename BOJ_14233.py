@@ -4,7 +4,11 @@ input = sys.stdin.readline
 
 n = int(input())
 works = list(map(int, input().split()))
-for i in range(n):
-    works[i] = math.ceil(works[i]/(i+1))
 works.sort()
-print(works[0])
+k = works[0] # 최솟값
+for i in range(n):
+    if k > works[i]/(i+1):
+        k = math.floor(works[i]/(i+1))
+
+print(k)
+
