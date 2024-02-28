@@ -35,8 +35,6 @@ def bfs(color, y, x):
                     queue.append((graph[nrow][ncol], nrow, ncol))
                     visited[nrow][ncol] = True
                     
-
-
 # 정상
 for i in range(n):
     for j in range(n):
